@@ -1,0 +1,278 @@
+/* ========================================
+   ESTILO DEL LOGIN - COPIA FIEL DE LA IMAGEN
+   Solo CSS - Sin tocar ZUL
+======================================== */
+
+/* Fondo general */
+.login_container {
+    background: linear-gradient(135deg, #4266F4, #7FE4FF);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Contenedor principal del login */
+.wrapper_login {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+/* Lado izquierdo: Imagen y texto */
+.container_img {
+    flex: 1;
+    background: linear-gradient(135deg, #4266F4, #7FE4FF);
+    color: white;
+    /* padding: 40px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Lado izquierdo: Imagen y texto */
+.container_imgder {
+    flex: 1;
+    /*background: linear-gradient(135deg, #4266F4, #7FE4FF);*/
+    color: white;
+    /* padding: 40px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Estilo del logo (imagen) */
+.container_img .logo {
+    width: 100%;
+    height: auto;
+    /* margin-bottom: 20px; */
+    /* filter: brightness(1.2); */
+}
+
+/* Estilo del logo (imagen) */
+.container_imgder .logoder {
+    width: 120px;
+    height: auto;
+    /* margin-bottom: 20px; */
+    /* filter: brightness(1.2); */
+}
+
+/* Texto "WELCOME" y subtítulo */
+.container_img .title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.container_img .subtitle {
+    font-size: 1rem;
+    opacity: 0.8;
+    text-align: center;
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+/* Círculos decorativos */
+.container_img::before,
+.container_img::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.container_img::before {
+    width: 300px;
+    height: 300px;
+    top: -150px;
+    left: -150px;
+}
+
+.container_img::after {
+    width: 200px;
+    height: 200px;
+    bottom: -100px;
+    right: -100px;
+}
+
+/* Lado derecho: Formulario de login */
+.container_signin {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Título y subtítulo del formulario */
+.container_signin .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.container_signin .subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Contenedor de inputs */
+.wrapper_all_inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Input individual */
+.wrapper_input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 15px;
+    background: #fafafa;
+}
+
+/* Ícono dentro del input */
+.wrapper_input .icon {
+    color: #666;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+/* Estilo de los inputs */
+.input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: #333;
+}
+
+.input_password {
+    padding-right: 40px; /* Espacio para el ojo */
+}
+
+/* Icono de mostrar/ocultar contraseña */
+.icon_eye {
+    position: absolute;
+    right: 15px;
+    cursor: pointer;
+    color: #666;
+    font-size: 16px;
+}
+
+/* Enlace "Olvidé mi contraseña" */
+.forgot_text {
+    color: #1e6f94;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-align: right;
+    display: block;
+}
+
+/* Botones */
+.wrapper_buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn_sign {
+    background: #1e6f94;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn_sign:hover {
+    background: #009788;
+}
+
+.btn_sign_reg {
+    background: white;
+    color: #1e6f94;
+    border: 2px solid #1e6f94;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn_sign_reg:hover {
+    background: #1e6f94;
+    color: white;
+}
+
+/* --- ESTILOS RESPONSIVOS --- */
+
+@media screen and (max-width: 768px) {
+    .wrapper_login {
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+    .container_img {
+        padding: 30px;
+    }
+
+    .container_signin {
+        padding: 30px;
+    }
+
+    .container_img .title {
+        font-size: 1.5rem;
+    }
+
+    .container_img .subtitle {
+        font-size: 0.85rem;
+    }
+
+    .container_signin .title {
+        font-size: 1.2rem;
+    }
+
+    .wrapper_input {
+        padding: 8px 12px;
+    }
+
+    .input {
+        font-size: 13px;
+    }
+
+    .btn_sign,
+    .btn_sign_reg {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+
+
+

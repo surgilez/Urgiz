@@ -1,0 +1,85 @@
+<?link rel="stylesheet" type="text/css" href="/css/app/landing/signin.css"?>
+<?link rel="stylesheet" type="text/css" href="/css/boostrap/bootstrap.css"?>  
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+
+<?script src="/js/icon.js"?>
+<?script src="./js/inicio.js?v1"?>
+
+ <?link rel="icon" type="image/x-icon" href="/imagenes/logo/paybillslogo.png"?> 
+<?page title="Facturacion electrónica" contentType="text/html;charset=UTF-8"?>
+
+<zk >
+    <div class="login_container" id="loginWin" apply="com.ec.controlador.LoginController">
+        <div class="wrapper_login">
+            <div class="container_img  d-none d-lg-block"> 
+              <image src="./imagenes/izquierdo.png" class="logo d-none d-lg-block"/>
+            <div class="wrapper_title">
+                <!--<span class="title">Sistema de Facturación Electrónica</span>-->
+                <!--<span class="title">Actualizaciones:</span>-->
+                <!--<span class="title"></span>-->
+                <!--<div class="desc">* IVA-2024</div>-->
+                <!--<div class="desc">* Envío automático 2025</div>-->
+                <!--<div class="desc">Estimado usuario, bienvenido a nuestro sistema.</div>-->
+                <!--<div class="desc">Obten tu firma electrónica con nosotros.</div>-->
+                <!--<div class="desc">* Asesoramiento directo.</div>-->
+                <!--<div class="desc">* PayBills</div>-->
+                <!--<div class="desc">099 353 0018</div>-->
+                <!--<div class="desc">www.deckxel.com</div>-->
+            </div>
+            </div>
+            <div class="container_signin">
+                <div class="container_imgder">  <image src="./imagenes/logo/paybillslogo1.png" class="logoder" /></div>
+             
+                 
+                <span class="title">Hola de nuevo</span>
+                <span class="subtitle">ingresa tu RUC</span>
+              
+                <div class="wrapper_all_inputs">
+                    <div class="wrapper_input">
+                        <span class="fas fa-user icon"></span>
+                        <textbox 
+                            type="text" 
+                            class="input" 
+                            id="account" 
+                            onCreate="self.focus()"
+                            placeholder="Ingrese el usuario" 
+                        />
+                    </div>
+                    <div class="wrapper_input">
+                        <span class="fas fa-lock icon"></span>
+                        <textbox 
+                            type="password" 
+                            placeholder="Contraseña" 
+                            class="input input_password" 
+                            id="password"
+                           
+                        />
+                        <span class="fa-solid fa-eye icon_eye icon"></span>
+                    </div>
+                </div>
+
+                <span class="forgot_text" id="linkOlvideContrasena">Olvide mi contraseña</span>
+
+
+                 <div class="wrapper_buttons">
+                    <button 
+                        class="btn btn_sign" 
+                        id="buttonEntrar"
+                    >Iniciar Sesión
+                    </button>
+<!--                    <button 
+                        class="btn btn_sign_reg"
+                        id="btnRegistra"
+                    >Registro
+                    </button>-->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper_loading loading_inicio">
+        <div class="lds-dual-ring"></div>
+    </div>
+</zk>

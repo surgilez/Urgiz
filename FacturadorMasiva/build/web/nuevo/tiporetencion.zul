@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window  id="windowTipOCodigo"  position="center"  class="col-12 col-sm-12 col-md-6 col-lg-6"  closable="true"  
+         apply="org.zkoss.bind.BindComposer"
+         viewModel="@id('vm') @init('com.ec.controlador.NuevoTipoRetencion')">
+    
+    <caption label="Código de retención" style="font-weight:bold"/>  
+    <div class="container_modal">
+
+        <div class="body">
+            <div class="container_row_input">
+               
+                <div class="wrapper_input_mod">
+                    <span>Codigo: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-address-card icon"></div>
+                        <textbox    value="@bind(vm.entidad.tireCodigo)" 
+                                    class="input_text"   />
+                    
+                    </div>
+                </div>
+                 <div class="wrapper_input_mod" style="flex:auto">
+                    <span style="margin:0 0.5em">Descripcion: </span>
+                    <div class="wrapper_input_text" style="width:100%">
+                        <div class="fa-solid fa-dollar-sign icon"></div>
+                        <textbox  
+                            value="@bind(vm.entidad.tireNombre)"
+                            class="input_text" 
+                        />
+                    </div>
+                </div>
+                
+              
+           
+               
+
+            </div>
+            <div class="container_row_input">
+               
+               
+              
+           
+                <div class="wrapper_input_mod">
+                    <span>Porcentaje: </span>
+                    <div class="wrapper_input_text">
+                        <div class="fa-solid fa-city icon"></div>
+                        <decimalbox   maxlength="100" 
+                        value="@bind(vm.entidad.tirePorcentajeRetencion)"
+                                      class="input_text" 
+                        />
+                        
+                    </div>
+                </div>
+
+            </div>
+            
+            
+              
+           
+
+        </div>
+        
+        <div style="display:flex;justify-content:flex-end;">
+            <button class="btn_modal" style="width:300px" onClick="@command('guardar')">
+                Guardar
+            </button>
+        </div>
+    </div>
+                  
+
+                    
+                  
+</window>
