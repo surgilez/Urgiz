@@ -1,0 +1,156 @@
+/* ========================================
+   ESTILO DEL MODAL "Olvidé mi clave" - COPIA FIEL DEL LOGIN
+   ✅ Fondo blanco con borde azul claro
+   ✅ Logo en la parte superior
+   ✅ Título y subtítulo
+   ✅ Campos de entrada con íconos
+   ✅ Botón de recuperar con color azul oscuro
+======================================== */
+
+/* Estilo general del modal */
+.window_reg {
+    background: white;
+    border: 2px solid #1e6f94;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Caption del modal */
+.window_recuperar_clave {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Contenedor principal del modal */
+.container_forgot_registro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Wrapper del formulario */
+.wrapper_forgot {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Logo */
+.logo {
+    width: 150px;
+    height: auto;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+/* Título y subtítulo */
+.info_wrapper_forgot .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.info_wrapper_forgot .subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de inputs */
+.wrapper_all_inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Input individual */
+.wrapper_input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 15px;
+    background: #fafafa;
+}
+
+/* Ícono dentro del input */
+.wrapper_input .icon {
+    color: #666;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+/* Estilo de los inputs */
+.input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Botón de recuperar */
+.btn_reg {
+    background: #1e6f94;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+}
+
+.btn_reg:hover {
+    background: #009788;
+}
+
+/* --- ESTILOS RESPONSIVOS --- */
+
+@media screen and (max-width: 768px) {
+    .wrapper_forgot {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    .info_wrapper_forgot .title {
+        font-size: 1.2rem;
+    }
+
+    .info_wrapper_forgot .subtitle {
+        font-size: 0.85rem;
+    }
+
+    .wrapper_input {
+        padding: 8px 12px;
+    }
+
+    .input {
+        font-size: 13px;
+    }
+
+    .btn_reg {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?link rel="stylesheet" type="text/css" href="/css/boostrap/bootstrap.css"?>  
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+<?link rel="stylesheet" type="text/css" href="/css/app/ventas/facturar.css"?>
+<?link rel="stylesheet" type="text/css" href="/css/app/ventas/modales.css"?>
+<?script src="/js/icon.js"?>
+<?script src="../js/facturar.js"?>
+
+<?init class="com.ec.seguridad.Autentificador"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/plantilla/plantilla.zul"?>
+
+<zk   width="100%" class="container" 
+>
+
+    <!--onCreate="@command('aperturaCaja')"-->
+    <hbox self="@define(content)" apply="org.zkoss.bind.BindComposer" 
+          viewModel="@id('vm') @init('com.ec.controlador.Facturar')" width="100%">
+    
+  
+        <tabbox  width="100%"  tabscroll="true" >
+            <tabs >
+                <tab label="Crear producto" sclass="menutabs" selected="true" />
+
+            </tabs>
+
+           <tabpanels>
+
+                 <tabpanel height="100%" hflex="min">
+                    <include src="/venta/admproducto.zul"/>  
+                </tabpanel>
+                
+            </tabpanels>
+        </tabbox>   
+    </hbox>
+    <div class="wrapper_loading loading_inicio">
+        <div class="lds-dual-ring"></div>
+    </div>
+</zk>

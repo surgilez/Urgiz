@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?link rel="stylesheet" type="text/css" href="/css/boostrap/bootstrap.css"?>  
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+<?link rel="stylesheet" type="text/css" href="/css/app/ventas/facturar.css"?>
+<?link rel="stylesheet" type="text/css" href="/css/app/ventas/modales.css"?>
+<?script src="/js/icon.js"?>
+
+ <?link rel="icon" type="image/x-icon" href="/imagenes/logo/paybillslogo.png"?> 
+<?init class="com.ec.seguridad.Autentificador"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/plantilla/plantilla.zul"?>
+
+<zk  contentStyle="overflow:auto" with="100%" class="container" >
+    <!--<caption label="Guia de remision" style="font-weight:bold"/>--> 
+    <hbox self="@define(content)" apply="org.zkoss.bind.BindComposer" 
+          viewModel="@id('vm') @init('com.ec.controlador.GuiaRemision')" >
+        <tabbox  width="100%"  tabscroll="true" >
+            <tabs >
+                <tab label="Guia remisión" sclass="menutabs"/>
+            </tabs>
+            <tabpanels >
+                <tabpanel  height="100%" width="98%"  >
+                    <div class="container-fluid">
+             
+                        <div class="factura_header">
+                            <div class="fact_row">
+                                <div class="wrapper_data">
+                                    <div class="wrapper_input">
+                                        <span>Cliente:</span>
+                                        <textbox   
+                                            class="input"
+                                            ctrlKeys="^A" onCtrlKey="@command('buscarClienteEnLista')" 
+                                            placeholder="Cedula"
+                                            value="@bind(vm.clienteBuscado.cliCedula)" 
+                                            onDoubleClick="@command('buscarClienteEnLista')"
+                                            maxlength="13"  
+                                        />
+                                        <div 
+                                            class="fa-solid fa-magnifying-glass icon" 
+                                            onClick="@command('buscarClienteEnLista')"  
+                                            tooltiptext="Buscar cliente"
+                                        />
+                                    </div>
+                                    <div class="wrapper_input">
+                                        <span>Tipo:</span>
+                                        <textbox 
+                                            class="input" 
+                                            readonly="true" 
+                                            value="@bind(vm.clienteBuscado.cliNombre)"
+                                        />
+                                    </div>
+                                   
+                                </div>
+                                <div class="wrapper_data">
+                                    <div class="wrapper_input">
+                                        <span>Conductor:</span>
+                                        <combobox  
+                                            model="@load(vm.listaTransportistas)"  
+                                            selectedItem="@bind(vm.transportista)" 
+                                            width="100%"         
+                                            class="  textoFechaDateBox"      
+                                            readonly="true" 
+                                        >
+                                            <template name="model">
+                                                <comboitem  label="@bind(each.trpRazonSocial)"/>
+                                            </template>                                      
+                                        </combobox>
+                                        <!--<div class="fa-solid fa-chevron-down icon"/>-->
+                                    </div>
+                                    <div class="wrapper_input">
+                                        <span>Motivo:</span>
+                                        <combobox 
+                                            readonly="true"     
+                                            selectedItem="@bind(vm.motivoGuia)" 
+                                            width="100%"         
+                                       class="  textoFechaDateBox"      
+                                        >                             
+                                            <comboitem label="Compra" value="COMPRA" />                    
+                                            <comboitem label="Consignación" value="CONSIGNACION" />
+                                            <comboitem label="Devolución" value="DEVOLUCION" />
+                                            <comboitem label="Exportación" value="EXPORTACION" />
+                                            <comboitem label="Importación" value="IMPORTACION" />
+                                            <comboitem label="Transformación" value="TRANSFORMACION" />
+                                            <comboitem label="Traslado" value="TRASLADO" />
+                                            <comboitem label="Venta" value="VENTA" />
+                                            <comboitem label="Otros" value="OTROS" />
+                                        </combobox>
+                                        <!--<div class="fa-solid fa-chevron-down icon"/>-->
+                                    </div>
+                                    <div class="wrapper_input">
+                                        <span>Placa:</span>
+                                        <textbox                                               
+                                            onChange="self.setValue(self.getValue().toUpperCase());"
+                                            value="@bind(vm.numeroPlaca)"  
+                                            class="input"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fact_row facturar_wrapper_data">
+                                <div class="wrapper_data">
+                                    <div class="wrapper_input">
+                                        <span>Partida:</span>
+                                        <textbox 
+                                            onChange="self.setValue(self.getValue().toUpperCase());"
+                                            value="@bind(vm.partida)"  
+                                            class="input"
+                                        />
+                                    </div>
+                                    <div class="wrapper_input">
+                                        <span>Llegada:</span>
+                                        
+                                        <textbox  
+                                            onChange="self.setValue(self.getValue().toUpperCase());"
+                                            value="@bind(vm.llegada)" 
+                                            class="input" 
+                                        />
+                                    </div>
+                                    <div class="wrapper_input">
+                                        <span>Tipo Remisión:</span>
+                                        
+                                        <radiogroup  
+                                            selectedItem="@bind(vm.tipoGuiaRemision)"  
+                                            onCheck="@command('verificaNumeracion')" 
+                                            class="radio_group"                                   
+                                        >
+                                            <radio label="Emitida" value="EMITIDA" />                                                                         
+                                            <radio  label="Recibida" value="RECIBIDA"/>                                        
+                                        </radiogroup>
+                                    </div>
+
+                                </div>
+                                <div class="wrapper_data">
+                                    <div class="wrapper_input">
+                                        <span>Inic. Traslado:</span>
+                                        <datebox 
+                                            compact="true" 
+                                            value="@bind(vm.incioTraslado)" 
+                                            readonly="true" 
+                                            buttonVisible="true" 
+                                            lenient="true" 
+                                            format="dd/MM/yyyy" 
+                                            constraint="no empty: Ingrese la fecha "
+                                            class="input_date"
+                                        />
+                                        <div class="fa-solid fa-calendar icon" />
+                                    </div>
+                                    <div class="wrapper_input">
+                                        <span>Fin Traslado:</span>
+                                        <datebox 
+                                            compact="true" 
+                                            value="@bind(vm.finTraslado)" 
+                                            readonly="true"
+                                            buttonVisible="true" 
+                                            lenient="true" 
+                                            format="dd/MM/yyyy" 
+                                            constraint="no empty: Ingrese la fecha "
+                                            class="input_date"
+                                        />
+                                        <div class="fa-solid fa-calendar icon" />
+                                    </div>
+
+                                    <div class="wrapper_input">
+                                        <span>Num. Guía:</span>
+                                        <textbox 
+                                            id="txtNumeroGuiaRecibida" 
+                                            placeholder="Num. GUIA" 
+                                            visible="true" 
+                                            value="@bind(vm.numeroGuiaRecibida)" 
+                                            class="input"
+                                        />
+                                    </div>
+
+
+                                </div>
+                                <div class="fact_row wrapper_buttons">
+                                    <button 
+                                        class="fa-solid fa-floppy-disk btn_fact btn_primary"
+                                        autodisable="self"
+                                        onClick="@command('guardar')"
+                                        tooltiptext="Guardar guia de remision"
+                                    >
+                                        Guardar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="factura_body factura_body_content">
+                                
+                            <div class="factura_body_item" >
+                                <listbox model="@load(vm.listaProducto)" 
+                                         nonselectableTags=""    mold="paging" pageSize="10"   >
+                                    <custom-attributes org.zkoss.zul.listbox.rod="true"/>
+      
+                    
+                                    <listhead class="encabezado17 encabezado"> 
+                                        <listheader width="100%"  label="Código"     align="left"   >
+                                                
+                                        </listheader>     
+                                        <listheader width="100%" align="left"   >
+                                            <textbox value="@bind(vm.buscarNombreProd)"  
+                                                     id="idBusquedaProd"
+                                                     class="form-control form-control-sm"
+                                                     tooltiptext="Descripción"
+                                                     placeholder="Descripción"
+                                                     onOK="@command('buscarLikeNombreProd')"                                                     
+                                                     onChange="self.setValue(self.getValue().toUpperCase());" />
+                                        </listheader>                         
+                                        <listheader width="100%"  label="Pvp" align="center" /> 
+                                        <listheader width="100%"  label="Asignar" align="center"/>
+                           
+                                    </listhead>  
+                    
+                                    <template name="model">                                                            
+                                        <listitem class="tabla17 tabla" onOK="@command('agregarItemLista',valor=each)">
+                                            <listcell style="font-size:11px;background-color:#d6eefd" zclass = "mycss-listcell" 
+                                                      onDoubleClick="@command('agregarItemLista',valor=each)">
+                                                <label class="form-control form-control-sm"
+                                                       style="font-size:10px;background-color:#d6eefd"
+                                                       value="@bind(each.prodCodigo)"     onCreate="self.focus()"
+                                                       onDoubleClick="@command('agregarItemLista',valor=each)"/>
+                                                
+                                            </listcell>
+                                            <listcell style="font-size:11px;background-color:#d6eefd" zclass = "mycss-listcell" 
+                                                      onDoubleClick="@command('agregarItemLista',valor=each)" >
+                                                <label class="form-control form-control-sm"
+                                                       style="font-size:10px;background-color:#d6eefd"
+                                                       value="@bind(each.prodNombre)"  
+                                                       onDoubleClick="@command('agregarItemLista',valor=each)" />
+                                            </listcell>
+                                            <listcell style="font-size:11px;background-color:#d6eefd" zclass = "mycss-listcell" 
+                                                      onDoubleClick="@command('agregarItemLista',valor=each)" >                                                    
+                                                <label class="form-control form-control-sm"
+                                                       style="font-size:10px;background-color:#d6eefd"
+                                                       onOK="@command('agregarItemLista',valor=each)" 
+                                                       value="@bind(each.pordCostoVentaFinal)"  />
+                                            </listcell>
+                
+                                            <listcell  zclass = "mycss-listcell"  >   
+                                                <!-- <image  src="/iconos/Forward.png" 
+                                                onClick="@command('agregarItemLista',valor=each)" 
+                                                tooltiptext="Asigar producto"/>  -->
+                                                <div 
+                                                    class="fa-solid fa-chevron-right"
+                                                    style="font-size:16px; padding:0.5em; cursor:pointer;font-weight: bold"
+                                                    onClick="@command('agregarItemLista',valor=each)" 
+                                                    tooltiptext="Asignar producto"
+                                                />
+                                            </listcell>
+                                        </listitem>
+                                    </template>
+                                </listbox>
+                            </div>
+                            
+                            <div class="factura_body_item" align="end">
+                                <listbox model="@load(vm.listaGuiaModel)"
+                                         nonselectableTags="*" 
+                                         checkmark="true"  
+                                         multiple="true" 
+                                         onSelect="@command('seleccionarRegistros')"   mold="paging" pageSize="10">
+                                    <custom-attributes org.zkoss.zul.listbox.rod="true"/>
+                                              
+                                        
+                                    <listhead class="encabezado18 encabezado">
+                                        <listheader style="margin:0;"  width="100%"  label="" align="left" >
+                                            <button label="Anular" 
+                                                    width="100%" 
+                                                    onClick="@command('eliminarRegistros')"  
+                                                    class="btn btn btn-secondary btn-sm "
+                                                    style="background:black;color:white;font-size:10px;"
+                                                    tooltiptext="Eliminar registros seleccionados"/>
+                                        </listheader>
+                                        <listheader width="100%"  label="Cantidad" align="left" />
+                                        <listheader width="100%"  label="Descripción" align="left"  />                                                                                 
+                                    </listhead>
+                    
+                                    <template name="model">                                                            
+                                        <listitem class="tabla18 tabla">
+                                            <listcell >
+                                                    
+                                            </listcell>                                                      
+                                            <listcell zclass = "mycss-listcell">
+                                                <decimalbox style="font-size:10px"
+                                                            class="form-control form-control-sm" 
+                                                            format="###.#####"
+                                                            value="@bind(each.detCantidad)"  />
+                                            </listcell>
+                                            <listcell zclass = "mycss-listcell">
+                                                <textbox  style="font-size:10px"
+                                                          class="form-control form-control-sm" 
+                                                          value="@bind(each.detDescripcion)"  />
+                                            </listcell>
+                                            
+                                        </listitem>
+                                    </template>
+
+                                </listbox>
+                                <div class="wrapper_input_mod" style="flex:auto;display: contents">
+                                    <span style="margin:0 4em"> Observacion:</span>
+                                    <div class="wrapper_input_text" style="width:100%;margin-left:1px">
+                                        <!--<div class="fa-solid fa-dollar-sign icon"></div>-->
+                                        <textbox  
+                                            maxlength="500" 
+                                            multiline="true"
+                                            width="100%"
+                                            style="margin-bottom:15px; margin-left:1px"  
+                                            rows="3"
+                                            value="@bind(vm.guiaObservacion)"
+                                            class="input_text" 
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                  
+                    </div> 
+                </tabpanel>
+            </tabpanels>
+        </tabbox>    
+    </hbox>
+</zk>

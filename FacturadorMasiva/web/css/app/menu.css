@@ -1,0 +1,273 @@
+/* ========================================
+   ESTILO MODERNO PARA MENÚ ZK (sin tocar ZUL)
+   Basado en Paybills - Solo CSS
+======================================== */
+
+/* Fondo general del sidebar */
+.banner {
+    background: #393d42 !important;
+    color: white !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+/* Scroll personalizado */
+.banner::-webkit-scrollbar {
+    width: 8px;
+}
+.banner::-webkit-scrollbar-thumb {
+    background: #1E6F94;
+    border-radius: 10px;
+}
+.banner::-webkit-scrollbar-track {
+    background: #2d3135;
+}
+
+/* LOGO */
+.logo_defact {
+    display: block !important;
+    margin: 1.5rem auto 1rem !important;
+    width: 120px !important;
+    height: auto !important;
+}
+
+/* USUARIO */
+.usuarioData {
+    background: transparent !important;
+    padding: 0 1.5rem 1.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    border-bottom: 1px solid #4a4f53 !important;
+}
+
+.usuarioData .labelNuevo {
+    color: #e0e0e0 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    margin: 0 !important;
+}
+
+/* Botón Salir */
+.salir {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    width: auto !important;
+    padding: 8px 16px !important;
+    margin: 0.5rem auto 0 !important;
+    background: #ff6961 !important;
+    color: white !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    text-decoration: none !important;
+}
+
+.salir .icon_exit {
+    margin: 0 !important;
+}
+
+.salir:hover {
+    background: #ff4d4d !important;
+}
+
+/* === MENUBAR PRINCIPAL === */
+.wrapper_menu {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+.z-menubar-ver {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 1rem !important;
+}
+
+/* Estilo de <menu> (menús principales como "Ventas", "Compras") */
+.menu_child,
+.z-menu-btn {
+    background: transparent !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    padding: 12px 16px !important;
+    border-radius: 6px !important;
+    margin: 0.3rem 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    position: relative !important;
+    transition: background 0.2s ease !important;
+}
+
+/* Ícono de menú principal (simulado con ::before) */
+.menu_child::before {
+    content: "" !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    margin-right: 4px !important;
+    color: #1E6F94 !important;
+    width: 20px !important;
+    text-align: center !important;
+}
+
+/* Íconos específicos por ID (opcional, mejora visual) */
+#menuEmitirfact::before { content: "\f2bb" !important; } /* dollar-sign */
+#menuCompras::before { content: "\f447" !important; }    /* box */
+#menuRetencion::before { content: "\f0a0" !important; } /* file-invoice-dollar */
+#menuGuias::before { content: "\f0d1" !important; }     /* truck */
+
+/* Hover menú principal */
+.menu_child:hover,
+.z-menu-body-over .z-menu-inner-m {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+}
+
+/* Menú seleccionado (activo) */
+.z-menu-body-seld .z-menu-inner-m,
+.z-menu-body-seld .menu_child {
+    background: rgba(30, 111, 148, 0.3) !important;
+    color: white !important;
+}
+
+/* === SUBMENÚS (<menupopup>) === */
+.submenu {
+    background: #2d3135 !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 0.5rem 0 !important;
+    margin: 0.2rem 0 0.5rem 0 !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
+    z-index: 2000 !important;
+}
+
+/* Estilo de <menuitem> (elementos del submenú) */
+.menu_item,
+.z-menuitem-btn {
+    background: transparent !important;
+    color: #d0d0d0 !important;
+    padding: 8px 24px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    position: relative !important;
+    transition: none !important;
+}
+
+/* Ícono de submenú (a la izquierda) */
+.menu_item::before {
+    content: "" !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    width: 20px !important;
+    text-align: center !important;
+    color: #1E6F94 !important;
+    font-size: 14px !important;
+}
+
+/* Flechita derecha para submenús (simulando "►") */
+.menu_item::after {
+    content: "\f054" !important; /* angle-right */
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    position: absolute !important;
+    right: 16px !important;
+    color: #666 !important;
+    font-size: 12px !important;
+}
+
+/* Hover submenú */
+.menu_item:hover,
+.z-menuitem-body-over .z-menuitem-inner-m {
+    background: rgba(30, 111, 148, 0.3) !important;
+    color: white !important;
+}
+
+.menu_item:hover::after {
+    color: white !important;
+}
+
+/* === MENÚ "Empresa" (menubarEmpresa) === */
+#menubarEmpresa .menu_child {
+    padding: 10px 16px !important;
+    margin-top: 1rem !important;
+    border-top: 1px solid #4a4f53 !important;
+}
+
+#menubarEmpresa .menu_item::before {
+    color: #d5ecfb !important;
+}
+
+/* Óptimo: íconos personalizados por ID (mejora UX) */
+/* Ventas */
+#btnCrearCliente::before { content: "\f007" !important; }           /* user */
+#btnCrearProducto::before { content: "\f1b2" !important; }         /* cube */
+#btnFacturar::before { content: "\f541" !important; }              /* file-invoice */
+#btnNotaVentas::before { content: "\f571" !important; }            /* file-invoice-dollar */
+#btnfactCobra::before { content: "\f0d6" !important; }             /* dollar-sign */
+#btnNotaCredito::before { content: "\f0ae" !important; }           /* clipboard-list */
+#btnProformasEmitidas::before { content: "\f1ea" !important; }     /* newspaper */
+#btnAcumuladoventas::before { content: "\f080" !important; }       /* chart-bar */
+#btnBalanceUtilidad::before { content: "\f24d" !important; }       /* balance-scale */
+
+/* Compras */
+#btnCrearProveedor::before { content: "\f2b9" !important; }        /* user-friends */
+#btnIngresoCompras::before { content: "\f447" !important; }        /* box */
+#btnListaCompras::before { content: "\f03a" !important; }          /* list */
+#btnRetenciones::before { content: "\f022" !important; }           /* file */
+#btnKardex::before { content: "\f56f" !important; }                /* book */
+#btnKardexPorProd::before { content: "\f02d" !important; }         /* book-open */
+#btnRotacionProducto::before { content: "\f086" !important; }      /* sync */
+#btnAjuste::before { content: "\f044" !important; }                /* edit */
+
+/* Retención */
+#btnRetencionManual::before { content: "\f022" !important; }
+#btnEmitRetencionManual::before { content: "\f572" !important; }   /* file-contract */
+
+/* Guías */
+#btnEmitirGuiaRemision::before { content: "\f0d1" !important; }
+#btnGuiaRemision::before { content: "\f536" !important; }          /* ticket-alt */
+
+/* Otros ítems */
+#btnHisDeclaraciones::before { content: "\f017" !important; }      /* clock */
+#muenGestionUsu::before { content: "\f0c0" !important; }           /* users */
+#muenGestionEmpresas::before { content: "\f1ad" !important; }      /* building */
+#btnAdministarVenta::before { content: "\f07b" !important; }       /* folder */
+#btnGestionFactura::before { content: "\f570" !important; }        /* file-invoice-dollar */
+#btnConfSRI::before { content: "\f013" !important; }               /* cog */
+
+/* Empresa submenu */
+[onclick*='modificarUsuario']::before { content: "\f044" !important; }
+#logoutMenu::before { content: "\f2f5" !important; color: #ff6961 !important; } /* right-from-bracket */
+
+/* Ocultar controles nativos de ZK que interfieren */
+.z-menu-inner-l, .z-menu-inner-r,
+.z-menuitem-inner-l, .z-menuitem-inner-r {
+    display: none !important;
+}
+
+.z-menu-inner-m, .z-menuitem-inner-m {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    color: inherit !important;
+    width: 100% !important;
+    text-align: left !important;
+}
+
+/* Garantizar que el menú no tenga bordes ni fondos heredados */
+.z-menubar-ver .z-menu-body,
+.z-menubar-ver .z-menuitem-body {
+    background: transparent !important;
+    border: none !important;
+}

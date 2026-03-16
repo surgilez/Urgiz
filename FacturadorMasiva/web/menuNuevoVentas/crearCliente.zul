@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?link rel="stylesheet" type="text/css" href="/css/boostrap/bootstrap.css"?>  
+<?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+<?link rel="stylesheet" type="text/css" href="/css/app/ventas/facturar.css"?>
+<?link rel="stylesheet" type="text/css" href="/css/app/ventas/modales.css"?>
+<?script src="/js/icon.js"?>
+<?script src="../js/facturar.js"?>
+
+<?init class="com.ec.seguridad.Autentificador"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/plantilla/plantilla.zul"?>
+ 
+<zk  width="100%" class="container" 
+>
+
+    <!--onCreate="@command('aperturaCaja')"-->
+    <hbox self="@define(content)" apply="org.zkoss.bind.BindComposer" 
+          viewModel="@id('vm') @init('com.ec.controlador.Facturar')" width="100%">
+    
+        <timer id="timer" delay="300000" repeats="true" onTimer="@command('refrescarPagina')" />
+        <tabbox  width="100%"  tabscroll="true" >
+            <tabs >
+                <tab label="Crear cliente" sclass="menutabs" />
+               
+            </tabs>
+
+           <tabpanels>
+                <tabpanel apply="org.zkoss.bind.BindComposer" 
+          viewModel="@id('vm') @init('com.ec.controlador.AdministrarVenta')" height="98%" width="99%"  > 
+
+                <div class="container_headers" style="margin-bottom:1em">
+                    <div 
+                        class="fa-solid fa-plus-circle fa-1x icon"
+                        onClick="@command('nuevoCliente')"
+                        tooltiptext="Nuevo cliente"
+                    >
+                    <span>Nuevo cliente</span>
+                    </div>
+
+                    <div 
+                        class="fa-solid fa-file-excel fa-1x icon"
+                        onClick="@command('exportListboxToExcel')"
+                        tooltiptext="Descargar productos"
+                    >
+                <span>Exportar</span>
+                    </div>
+                </div>
+
+
+                 <div class="cont_body">
+                    <div class="cont_body_item">
+                        <listbox model="@load(vm.listaClientesAll)" 
+                                nonselectableTags="*"  mold="paging" pageSize="15"  >
+                            <custom-attributes org.zkoss.zul.listbox.rod="true"/>
+                            <listhead class="encabezado21 encabezado"> 
+                                <listheader  width="100%" >
+                                    <textbox value="@bind(vm.buscarCedula)" 
+                                            class="form-control form-control-sm"
+                                            tooltiptext="Cedula"
+                                            placeholder="Identificacion"
+                                            onOK="@command('buscarClienteCedula')"
+                                            onChange="self.setValue(self.getValue().toUpperCase());" />
+                                </listheader>     
+                           
+                                <listheader width="100%"   > 
+                                    <textbox value="@bind(vm.buscarNombre)" 
+                                            class="form-control form-control-sm"
+                                            tooltiptext="Nombre Comercial"
+                                            placeholder="Nombre Comercial"
+                                            onOK="@command('buscarClienteNombre')"
+                                            onChange="self.setValue(self.getValue().toUpperCase());" />
+                                </listheader>
+                                
+                                <listheader width="100%"  label="Dirección "  /> 
+                                <listheader width="100%"  label="Teléfono "  />        
+                                <listheader width="100%"  label="Movil"/>
+                                <listheader width="100%"  label="Correo"/>
+                                <listheader width="100%"  label="Editar" align="center"/>
+                                
+                            </listhead>  
+                        
+                            <template name="model">                                                            
+                                <listitem class="tabla21">
+                                    <listcell zclass = "mycss-listcell">
+                                        <textbox readonly="true"  style="font-size:12px;background:#EBF5FB"
+                                                class="form-control form-control-sm"  value="@bind(each.cliCedula)"  />
+                                    </listcell>
+                                
+                                    <listcell zclass = "mycss-listcell">
+                                        <textbox readonly="true"  style="font-size:12px;background:#EBF5FB"
+                                                class="form-control form-control-sm"  value="@bind(each.cliNombre)"  />
+                                    </listcell>
+                                    <listcell zclass = "mycss-listcell">
+                                        <textbox readonly="true"  style="font-size:12px;background:#EBF5FB"
+                                                class="form-control form-control-sm" value="@bind(each.cliDireccion)" />
+                                    </listcell>
+                                    <listcell zclass = "mycss-listcell">
+                                        <textbox readonly="true"  style="font-size:12px;background:#EBF5FB"
+                                                class="form-control form-control-sm" value="@bind(each.cliTelefono)" />
+                                    </listcell>
+                                    <listcell zclass = "mycss-listcell">
+                                        <textbox readonly="true"  style="font-size:12px;background:#EBF5FB"
+                                                class="form-control form-control-sm" value="@bind(each.cliMovil)" />
+                                    </listcell>
+                                    <listcell zclass = "mycss-listcell">
+                                        <textbox readonly="true" style="font-size:12px;background:#EBF5FB"
+                                            class="form-control form-control-sm"  value="@bind(each.cliCorreo)" />
+                                    </listcell>
+                                    <listcell zclass = "mycss-listcell" style="font-size:12px;background:#F8F9F9">    
+                                        <image src="/iconos/editar.png"
+                                            class="grow "
+                                            onClick="@command('actualizarCliente',valor=each)" 
+                                            tooltiptext="Modificar cliente"/>
+                                        
+                                    </listcell>
+                                </listitem>
+                            </template>
+                        </listbox>
+                    </div>
+                </div>                   
+                
+
+
+                
+                </tabpanel>
+                
+            </tabpanels>
+        </tabbox>   
+    </hbox>
+    <div class="wrapper_loading loading_inicio">
+        <div class="lds-dual-ring"></div>
+    </div>
+</zk>

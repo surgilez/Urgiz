@@ -1,0 +1,20 @@
+
+<?link rel="stylesheet" type="text/css" href="/css/app/base.css"?>
+<?link rel="stylesheet" type="text/css" href="/css/app/landing/signin.css"?>
+<?link rel="stylesheet" type="text/css" href="/css/app/menu.css"?>
+
+
+<?script src="/js/icon.js"?>
+<zk>
+    <borderlayout class="menu" >
+        <north style=""  border="none" >
+            <include src="/plantilla/banner1.zul"/>
+        </north>
+      
+
+    </borderlayout>
+
+    <div class="factura" id="mainContentAsesor"  self="@{insert(content)}"  >
+    </div>
+
+</zk>
