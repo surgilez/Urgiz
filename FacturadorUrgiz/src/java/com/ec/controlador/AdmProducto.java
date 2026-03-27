@@ -5,7 +5,6 @@
 package com.ec.controlador;
 
 import com.ec.entidad.DetalleKardex;
-import com.ec.entidad.FacturasActorizadaSri;
 import com.ec.entidad.Kardex;
 import com.ec.entidad.Producto;
 import com.ec.entidad.Tipoambiente;
@@ -101,6 +100,8 @@ public class AdmProducto {
 
     ServicioGeneral servicioGeneral = new ServicioGeneral();
 
+    private Boolean bloquearCargaProd = Boolean.FALSE;
+
     public AdmProducto() {
         Session sess = Sessions.getCurrent();
         credential = (UserCredential) sess.getAttribute(EnumSesion.userCredential.getNombre());
@@ -118,6 +119,14 @@ public class AdmProducto {
         }
         findLikeNombre();
         getProductosModel();
+
+        if (credential.getUsuarioSistema().getTipoPlan().equals("E")) {
+            bloquearCargaProd = Boolean.TRUE;
+        } else if (credential.getUsuarioSistema().getTipoPlan().equals("N")) {
+            bloquearCargaProd = Boolean.FALSE;
+        } else {
+            bloquearCargaProd = Boolean.FALSE;
+        }
     }
 
     private void getProductosModel() {
@@ -725,6 +734,19 @@ public class AdmProducto {
     public void cargarProducto() {
 
         try {
+            if (bloquearCargaProd) {
+                Clients.showNotification(
+                        "<b>Más funcionalidades. Más control.</b><br>"
+                        + "<span >Actualiza tu plan</span> y desbloquea todo el potencial de <b>PayBills</b>.",
+                        Clients.NOTIFICATION_TYPE_INFO,
+                        null,
+                        "end_center",
+                        6000,
+                        true // Este parámetro permite HTML en el mensaje
+                );
+                return;
+            }
+
             org.zkoss.util.media.Media media = Fileupload.get();
             if (media instanceof org.zkoss.util.media.AMedia) {
                 String nombre = media.getName();

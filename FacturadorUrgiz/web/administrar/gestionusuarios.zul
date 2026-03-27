@@ -77,7 +77,8 @@
                                     </listheader>
                                     <listheader label="Usuario"  align="left" width="100%"></listheader>
                                     <listheader label="Contraseña"  align="left" width="100%"></listheader>
-                                    <listheader label="Tipo usuario"  align="left" width="100%"></listheader>
+                                    <!--<listheader label="Tipo usuario"  align="left" width="100%"></listheader>-->
+                                    <listheader label="Tipo plan"  align="left" width="100%"></listheader>
                                     <listheader label="Fecha caduca"  align="left" width="100%"></listheader>
                                     <listheader label="Modificar"  align="center" width="100%"></listheader>
                                 </listhead>
@@ -104,9 +105,20 @@
                                                      type="password" />
                                         </listcell>  
                                         <listcell  zclass = "mycss-listcell">                          
-                                            <textbox readonly="true" value="@bind(each.idUsuario.usuTipoUsuario)"  style="font-size:12px;background:#EBF5FB"
+                                            <textbox if="${each.idUsuario.tipoPlan eq 'E'}" readonly="true" value="EMPRENDE" 
+                                                     style="font-size:12px;background:#EBF5FB"
+                                                     class="form-control form-control-sm"  />
+                                             <textbox if="${each.idUsuario.tipoPlan eq 'N'}" readonly="true" value="NEGOCIO" 
+                                                     style="font-size:12px;background:#EBF5FB"
+                                                     class="form-control form-control-sm"  />
+                                              <textbox if="${each.idUsuario.tipoPlan eq 'P'}" readonly="true" value="PRO" 
+                                                     style="font-size:12px;background:#EBF5FB"
                                                      class="form-control form-control-sm"  />
                                         </listcell>                  
+<!--                                        <listcell  zclass = "mycss-listcell">                          
+                                            <textbox readonly="true" value="@bind(each.idUsuario.tipoPlan)"  style="font-size:12px;background:#EBF5FB"
+                                                     class="form-control form-control-sm"  />
+                                        </listcell>                  -->
                                         <listcell  zclass = "mycss-listcell">                          
                                             <datebox 
                                                 width="100%"

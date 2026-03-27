@@ -13,7 +13,7 @@ tomcat
 *.dmg
 *.gz
 *.iso
-#*.jar
+*.jar
 *.rar
 *.tar
 *.zip
@@ -57,4 +57,8 @@ nbproject/
 release.properties
 pom.xml.releaseBackup
 pom.xml.tag
+<<<<<<< HEAD
 /FacturadorUrgiz/build/
+=======
+/SuTributacion/build/
+>>>>>>> cc3cd969da4003d317f34f3163bd7b18f63480ef

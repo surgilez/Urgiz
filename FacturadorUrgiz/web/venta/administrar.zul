@@ -15,15 +15,15 @@
           viewModel="@id('vm') @init('com.ec.controlador.AdministrarVenta')" width="100%">
         <tabbox id="tboxPrincipal"  width="100%">
             <tabs >
-                <tab label="Clientes" sclass="menutabs" /> 
-                <tab label="Productos" sclass="menutabs" /> 
-                <tab label="Proveedores" sclass="menutabs" /> 
-                <tab label="Conductor" sclass="menutabs" /> 
+                <tab label="Clientes" sclass="menutabs" disabled="@load(vm.clienteB)" /> 
+                <tab label="Productos" sclass="menutabs"  disabled="@load(vm.productoB)" /> 
+                <tab label="Proveedores" sclass="menutabs"  disabled="@load(vm.proveedorB)"  /> 
+                <tab label="Conductor" sclass="menutabs" disabled="@load(vm.conduvtorB)"  /> 
 
 <!--                <tab label="Usuario" sclass="menutabs" /> -->
 
-                <tab label="Configuracion SRI" sclass="menutabs" /> 
-                  <tab label="Codigos de retencion" sclass="menutabs" /> 
+                <tab label="Configuracion SRI" sclass="menutabs"  disabled="@load(vm.configuracionB)" /> 
+                  <tab label="Codigos de retencion" sclass="menutabs" disabled="@load(vm.codRetencionB)"  /> 
                 <!--<tab label="Parametrizar Empresa" sclass="menutabs" />--> 
                 <!--<tab label="Consultar catastro" sclass="menutabs" />--> 
 <!--

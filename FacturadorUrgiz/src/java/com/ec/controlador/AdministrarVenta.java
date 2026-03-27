@@ -69,6 +69,13 @@ public class AdministrarVenta {
     private Boolean esVisisible = Boolean.FALSE;
     private Boolean activo = Boolean.TRUE;
 
+    private Boolean clienteB = Boolean.TRUE;
+    private Boolean productoB = Boolean.TRUE;
+    private Boolean proveedorB = Boolean.TRUE;
+    private Boolean conduvtorB = Boolean.TRUE;
+    private Boolean configuracionB = Boolean.TRUE;
+    private Boolean codRetencionB = Boolean.TRUE;
+
     public AdministrarVenta() {
 //        Session sess = Sessions.getCurrent();
 //        credential = (UserCredential) sess.getAttribute(EnumSesion.userCredential.getNombre());
@@ -81,6 +88,30 @@ public class AdministrarVenta {
         FindClienteLikeNombre();
         consultarMail();
         cosultarUsuarios("");
+
+        if (credential.getUsuarioSistema().getTipoPlan().equals("E")) {
+            clienteB = Boolean.FALSE;
+            productoB = Boolean.FALSE;
+            proveedorB = Boolean.TRUE;
+            conduvtorB = Boolean.TRUE;
+            configuracionB = Boolean.FALSE;
+            codRetencionB = Boolean.TRUE;
+        } else if (credential.getUsuarioSistema().getTipoPlan().equals("N")) {
+            clienteB = Boolean.FALSE;
+            productoB = Boolean.FALSE;
+            proveedorB = Boolean.FALSE;
+            conduvtorB = Boolean.TRUE;
+            configuracionB = Boolean.FALSE;
+            codRetencionB = Boolean.TRUE;
+        } else {
+            clienteB = Boolean.FALSE;
+            productoB = Boolean.FALSE;
+            proveedorB = Boolean.FALSE;
+            conduvtorB = Boolean.FALSE;
+            configuracionB = Boolean.FALSE;
+            codRetencionB = Boolean.FALSE;
+        }
+
     }
 
     private void FindClienteLikeNombre() {
@@ -170,7 +201,7 @@ public class AdministrarVenta {
     public void nuevoCliente() {
         buscarCedula = "";
         org.zkoss.zul.Window window = (org.zkoss.zul.Window) Executions.createComponents(
-                    "/nuevo/cliente.zul", null, null);
+                "/nuevo/cliente.zul", null, null);
         window.doModal();
         FindClienteLikeCedula();
     }
@@ -182,7 +213,7 @@ public class AdministrarVenta {
         final HashMap<String, Cliente> map = new HashMap<String, Cliente>();
         map.put("valor", valor);
         org.zkoss.zul.Window window = (org.zkoss.zul.Window) Executions.createComponents(
-                    "/nuevo/cliente.zul", null, map);
+                "/nuevo/cliente.zul", null, map);
         window.doModal();
         FindClienteLikeCedula();
     }
@@ -205,7 +236,7 @@ public class AdministrarVenta {
 //        final HashMap<String, Cliente> map = new HashMap<String, Cliente>();
 //        map.put("cliente", null);
         org.zkoss.zul.Window window = (org.zkoss.zul.Window) Executions.createComponents(
-                    "/nuevo/nuevoMailing.zul", null, null);
+                "/nuevo/nuevoMailing.zul", null, null);
         window.doModal();
         consultarMail();
     }
@@ -217,7 +248,7 @@ public class AdministrarVenta {
         final HashMap<String, MailMasivo> map = new HashMap<String, MailMasivo>();
         map.put("valor", valor);
         org.zkoss.zul.Window window = (org.zkoss.zul.Window) Executions.createComponents(
-                    "/nuevo/nuevoMailing.zul", null, map);
+                "/nuevo/nuevoMailing.zul", null, map);
         window.doModal();
         consultarMail();
     }
@@ -250,7 +281,7 @@ public class AdministrarVenta {
     @NotifyChange("listaUsuarios")
     public void agregarUsario() {
         org.zkoss.zul.Window window = (org.zkoss.zul.Window) Executions.createComponents(
-                    "/nuevo/usuario.zul", null, null);
+                "/nuevo/usuario.zul", null, null);
         window.doModal();
         cosultarUsuarios("");
     }
@@ -261,7 +292,7 @@ public class AdministrarVenta {
         final HashMap<String, Usuario> map = new HashMap<String, Usuario>();
         map.put("usuario", usuario);
         org.zkoss.zul.Window window = (org.zkoss.zul.Window) Executions.createComponents(
-                    "/nuevo/usuario.zul", null, map);
+                "/nuevo/usuario.zul", null, map);
         window.doModal();
         cosultarUsuarios("");
     }
@@ -410,6 +441,54 @@ public class AdministrarVenta {
 
     public void setActivo(Boolean activo) {
         this.activo = activo;
+    }
+
+    public Boolean getClienteB() {
+        return clienteB;
+    }
+
+    public void setClienteB(Boolean clienteB) {
+        this.clienteB = clienteB;
+    }
+
+    public Boolean getProductoB() {
+        return productoB;
+    }
+
+    public void setProductoB(Boolean productoB) {
+        this.productoB = productoB;
+    }
+
+    public Boolean getProveedorB() {
+        return proveedorB;
+    }
+
+    public void setProveedorB(Boolean proveedorB) {
+        this.proveedorB = proveedorB;
+    }
+
+    public Boolean getConduvtorB() {
+        return conduvtorB;
+    }
+
+    public void setConduvtorB(Boolean conduvtorB) {
+        this.conduvtorB = conduvtorB;
+    }
+
+    public Boolean getConfiguracionB() {
+        return configuracionB;
+    }
+
+    public void setConfiguracionB(Boolean configuracionB) {
+        this.configuracionB = configuracionB;
+    }
+
+    public Boolean getCodRetencionB() {
+        return codRetencionB;
+    }
+
+    public void setCodRetencionB(Boolean codRetencionB) {
+        this.codRetencionB = codRetencionB;
     }
 
 }

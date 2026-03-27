@@ -49,7 +49,8 @@
             <menubar id="menubar" orient="vertical"  autodrop="true" class="wrapper_menu d-none d-lg-block">
             <menu label="Ventas" id="menuEmitirfact" class="menu_child fa-regular fa-file-invoice-dollar menu_item ">
                 <menupopup class="submenu">
-                    <menuitem label="Crear cliente" id="btnCrearCliente"  class="menu_item " style="color:black" />
+                    <!--disabled="true"-->
+                    <menuitem label="Crear cliente" id="btnCrearCliente"     class="menu_item " style="color:black" />
                     <menuitem label="Crear producto" id="btnCrearProducto" class="menu_item"/>
                     <menuitem label="Crear factura" id="btnFacturar" class="menu_item" />
                     <menuitem label="Facturas emitidas" id="btnNotaVentas" class="menu_item"/>   
@@ -89,9 +90,9 @@
                         
                 </menupopup>
             </menu> 
-            <menu label="Historial declaraciones" id="btnHisDeclaraciones" class="menu_child fa-regular fa-magnifying-glass-dollar menu_item " >
-                <menupopup >  
-                     <!--<menuitem  class=" fa-solid fa-paper-plane menu_item" />-->
+            <menu label="Historial declaraciones" class="menu_child fa-regular fa-magnifying-glass-dollar menu_item " >
+                <menupopup  class="submenu">  
+                       <menuitem label="Historial declaraciones" id="btnHisDeclaraciones" class="menu_item" />
                 </menupopup>
             </menu>
          

@@ -45,7 +45,7 @@ public class MenuOpciones extends SelectorComposer<Component> {
     @Wire("#muenGestionEmpresas")
     Menuitem muenGestionEmpresas;
     @Wire("#btnHisDeclaraciones")
-    Menu btnHisDeclaraciones;
+    Menuitem btnHisDeclaraciones;
     @Wire("#btnGestionFactura")
     Menuitem btnGestionFactura;
     @Wire("#btnOrden")
@@ -55,12 +55,54 @@ public class MenuOpciones extends SelectorComposer<Component> {
 
     @Wire("#btnCrearCliente")
     Menuitem btnCrearCliente;
+    @Wire("#btnCrearProducto")
+    Menuitem btnCrearProducto;
+    @Wire("#btnFacturar")
+    Menuitem btnFacturar;
+    @Wire("#btnNotaVentas")
+    Menuitem btnNotaVentas;
+    @Wire("#btnfactCobra")
+    Menuitem btnfactCobra;
+    @Wire("#btnNotaCredito")
+    Menuitem btnNotaCredito;
+    @Wire("#btnProformasEmitidas")
+    Menuitem btnProformasEmitidas;
+    @Wire("#btnAcumuladoventas")
+    Menuitem btnAcumuladoventas;
+    @Wire("#btnBalanceUtilidad")
+    Menuitem btnBalanceUtilidad;
+
     @Wire("#btnConfSRI")
     Menu btnConfSRI;
     @Wire("#btnRetencionManual")
     Menuitem btnRetencionManual;
+    @Wire("#btnEmitRetencionManual")
+    Menuitem btnEmitRetencionManual;
     @Wire("#menuRetencion")
     Menu menuRetencion;
+
+    @Wire("#btnCrearProveedor")
+    Menuitem btnCrearProveedor;
+    @Wire("#btnCrearProd")
+    Menuitem btnCrearProd;
+    @Wire("#btnIngresoCompras")
+    Menuitem btnIngresoCompras;
+    @Wire("#btnListaCompras")
+    Menuitem btnListaCompras;
+    @Wire("#btnRetenciones")
+    Menuitem btnRetenciones;
+    @Wire("#btnKardex")
+    Menuitem btnKardex;
+    @Wire("#btnKardexPorProd")
+    Menuitem btnKardexPorProd;
+    @Wire("#btnRotacionProducto")
+    Menuitem btnRotacionProducto;
+    @Wire("#btnAjuste")
+    Menuitem btnAjuste;
+    @Wire("#btnEmitirGuiaRemision")
+    Menuitem btnEmitirGuiaRemision;
+    @Wire("#btnGuiaRemision")
+    Menuitem btnGuiaRemision;
 
     UserCredential credential = new UserCredential();
     private String acceso = "";
@@ -91,7 +133,74 @@ public class MenuOpciones extends SelectorComposer<Component> {
                 muenGestionEmpresas.setVisible(Boolean.FALSE);
                 btnGestionFactura.setVisible(Boolean.FALSE);
             }
+
+            if (credential.getUsuarioSistema().getTipoPlan().equals("E")) {
+                /*Menu de ventas*/
+                btnCrearCliente.setDisabled(Boolean.FALSE);
+                btnCrearProducto.setDisabled(Boolean.FALSE);
+                btnFacturar.setDisabled(Boolean.FALSE);
+                btnNotaVentas.setDisabled(Boolean.FALSE);
+                btnfactCobra.setDisabled(Boolean.FALSE);
+                btnNotaCredito.setDisabled(Boolean.FALSE);
+                btnProformasEmitidas.setDisabled(Boolean.FALSE);
+                btnAcumuladoventas.setDisabled(Boolean.FALSE);
+                btnBalanceUtilidad.setDisabled(Boolean.FALSE);
+
+                /*Menu de Compras*/
+                btnCrearProveedor.setDisabled(Boolean.TRUE);
+                btnCrearProd.setDisabled(Boolean.TRUE);
+                btnIngresoCompras.setDisabled(Boolean.TRUE);
+                btnListaCompras.setDisabled(Boolean.TRUE);
+                btnRetenciones.setDisabled(Boolean.TRUE);
+                btnKardex.setDisabled(Boolean.TRUE);
+                btnKardexPorProd.setDisabled(Boolean.TRUE);
+                btnRotacionProducto.setDisabled(Boolean.TRUE);
+                btnAjuste.setDisabled(Boolean.TRUE);
+
+                /*Menu de guias*/
+                btnRetencionManual.setDisabled(Boolean.TRUE);
+                btnEmitRetencionManual.setDisabled(Boolean.TRUE);
+                /*Menu de retenciones*/
+                btnEmitirGuiaRemision.setDisabled(Boolean.TRUE);
+                btnGuiaRemision.setDisabled(Boolean.TRUE);
+                btnHisDeclaraciones.setDisabled(Boolean.TRUE);
+
+            } else if (credential.getUsuarioSistema().getTipoPlan().equals("N")) {
+                /*Menu de ventas*/
+                btnCrearCliente.setDisabled(Boolean.FALSE);
+                btnCrearProducto.setDisabled(Boolean.FALSE);
+                btnFacturar.setDisabled(Boolean.FALSE);
+                btnNotaVentas.setDisabled(Boolean.FALSE);
+                btnfactCobra.setDisabled(Boolean.FALSE);
+                btnNotaCredito.setDisabled(Boolean.FALSE);
+                btnProformasEmitidas.setDisabled(Boolean.FALSE);
+                btnAcumuladoventas.setDisabled(Boolean.FALSE);
+                btnBalanceUtilidad.setDisabled(Boolean.FALSE);
+
+                /*Menu de Compras*/
+                btnCrearProveedor.setDisabled(Boolean.FALSE);
+                btnCrearProd.setDisabled(Boolean.FALSE);
+                btnIngresoCompras.setDisabled(Boolean.FALSE);
+                btnListaCompras.setDisabled(Boolean.FALSE);
+                btnRetenciones.setDisabled(Boolean.FALSE);
+                btnKardex.setDisabled(Boolean.FALSE);
+                btnKardexPorProd.setDisabled(Boolean.FALSE);
+                btnRotacionProducto.setDisabled(Boolean.FALSE);
+                btnAjuste.setDisabled(Boolean.FALSE);
+
+                /*Menu de guias*/
+                btnRetencionManual.setDisabled(Boolean.TRUE);
+                btnEmitRetencionManual.setDisabled(Boolean.TRUE);
+                /*Menu de retenciones*/
+                btnEmitirGuiaRemision.setDisabled(Boolean.TRUE);
+                btnGuiaRemision.setDisabled(Boolean.TRUE);
+                btnHisDeclaraciones.setDisabled(Boolean.TRUE);
+            } else {
+
+            }
+
         }
+
     }
 
     @Listen("onClick = #buttonConsultar")
@@ -427,4 +536,5 @@ public class MenuOpciones extends SelectorComposer<Component> {
     public void btnFacturarMov() {
         Executions.sendRedirect("/venta/facturamov.zul");
     }
+
 }
