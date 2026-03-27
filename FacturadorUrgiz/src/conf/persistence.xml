@@ -3,7 +3,7 @@
   <persistence-unit name="FacturadorFernandoPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <!--<non-jta-data-source>jdbc/facturaec</non-jta-data-source>-->
-    <non-jta-data-source>jdbc/defact</non-jta-data-source>
+    <non-jta-data-source>jdbc/urgiz</non-jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="eclipselink.cache.shared.default" value="false"/>
