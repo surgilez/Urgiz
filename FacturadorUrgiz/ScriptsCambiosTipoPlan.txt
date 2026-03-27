@@ -1,0 +1,6 @@
+-- Column: public.usuario.tipo_plan
+
+-- ALTER TABLE IF EXISTS public.usuario DROP COLUMN IF EXISTS tipo_plan;
+
+ALTER TABLE IF EXISTS public.usuario
+    ADD COLUMN tipo_plan character varying(2) COLLATE pg_catalog."default";
