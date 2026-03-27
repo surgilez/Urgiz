@@ -15,8 +15,8 @@
        <caption  class="window_recuperar_clave"/>
     <div class="wrapper_login">
         <!-- Parte izquierda -->
-        <div class="container_img">
-            <image src="./imagenes/logo/paybillslogo.png" class="logo"/>
+        <div class="container_img_recup">
+            <image src="./imagenes/logo/paybillslogo1.png" class="logo" />
             
         </div>
 
@@ -35,7 +35,7 @@
                 <div class="wrapper_input">
                     <span class="fas fa-lock icon"></span>
                      <textbox type="text" placeholder="Correo" class="input"  maxlength="150"                          
-                            value="@bind(vm.usuRuc)" onCreate="self.focus()"/>
+                            value="@bind(vm.usuCorreo)" />
                 </div>
             </div>
 

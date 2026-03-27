@@ -94,6 +94,20 @@
                 </div>
             </div>
             <div class="container_row_input">
+                <div class="wrapper_input_mod">
+                    <!--<span>Declaración: </span>-->
+                     <radiogroup
+                         class="radio_group" 
+                         selectedItem="@bind(vm.usuarioSistema.tipoPlan)" >          
+                         <radio label="Plan Essential" value="E"/>   
+                         <space bar="false"  />        
+                         <radio label="Plan Business" value="N"/>
+                         <space bar="false"  />        
+                         <radio label="Plan Pro" value="P"/>           
+                     </radiogroup>
+                </div>
+            </div>
+            <div class="container_row_input">
                 <div class="wrapper_input">
                     <span>Plan ilimitado</span>
 

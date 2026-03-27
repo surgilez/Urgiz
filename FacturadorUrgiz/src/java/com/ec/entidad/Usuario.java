@@ -15,7 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -159,6 +158,9 @@ public class Usuario implements Serializable {
 
     @OneToMany(mappedBy = "idUsuario")
     private Collection<Tipoambiente> tipoambienteCollection;
+
+    @Column(name = "tipo_plan")
+    private String tipoPlan;
 
     public Usuario() {
     }
@@ -512,6 +514,14 @@ public class Usuario implements Serializable {
 
     public void setTipoambienteCollection(Collection<Tipoambiente> tipoambienteCollection) {
         this.tipoambienteCollection = tipoambienteCollection;
+    }
+
+    public String getTipoPlan() {
+        return tipoPlan == null ? "E" : this.tipoPlan;
+    }
+
+    public void setTipoPlan(String tipoPlan) {
+        this.tipoPlan = tipoPlan;
     }
 
 }

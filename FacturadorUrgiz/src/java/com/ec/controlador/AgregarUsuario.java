@@ -4,7 +4,6 @@
  */
 package com.ec.controlador;
 
-import com.ec.entidad.Parametrizar;
 import com.ec.entidad.Tipoambiente;
 import com.ec.entidad.Usuario;
 import com.ec.seguridad.EnumSesion;
@@ -12,13 +11,6 @@ import com.ec.seguridad.UserCredential;
 import com.ec.servicio.ServicioParametrizar;
 import com.ec.servicio.ServicioTipoAmbiente;
 import com.ec.servicio.ServicioUsuario;
-import com.ec.untilitario.MailerClassSistema;
-import java.math.BigDecimal;
-import java.rmi.RemoteException;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
@@ -30,7 +22,6 @@ import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
@@ -53,6 +44,7 @@ public class AgregarUsuario {
     private Tipoambiente amb = new Tipoambiente();
     ServicioParametrizar servicioParametrizar = new ServicioParametrizar();
     private Boolean readOnly = true;
+    private String tipoPlan = "E";
 
     @AfterCompose
     public void afterCompose(@ExecutionArgParam("usuario") Usuario usuarioSistema, @ContextParam(ContextType.VIEW) Component view) {
@@ -238,5 +230,15 @@ public class AgregarUsuario {
     public void setReadOnly(Boolean readOnly) {
         this.readOnly = readOnly;
     }
+
+    public String getTipoPlan() {
+        return tipoPlan;
+    }
+
+    public void setTipoPlan(String tipoPlan) {
+        this.tipoPlan = tipoPlan;
+    }
+    
+    
 
 }
